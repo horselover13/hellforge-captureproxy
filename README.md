@@ -38,7 +38,7 @@ This produces roughly 6 files:
 
 - `real-inventory.json` & `progression.json` - the thing you are here for, progression and inventory data fetched from the game
 - `proxy.log` & `capture-state.json` - seem to be logging files, in case if capture explodes
-- `seal.json` & `seal.key` - unique keys attached to your steam account, your progression and inventory data files, and your MAC address. (read: literally ID of your hardware) used by hellforge to make sure you aren't sinning on their behalf.
+- `seal.json` & `seal.key` - unique keys attached to your steam account, your progression and inventory data files, and your HMAC. (read: literally ID of your hardware) used by hellforge to make sure you aren't sinning on their behalf.
 
 ## Forcing HF to eat it up
 
