@@ -1,0 +1,49 @@
+[package]
+name = "hellforge-capture-proxy"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.87"
+description = "Linux stand-in for HellForge.CaptureProxy: captures HELLDIVERS 2 inventory and progression from the live API"
+license = "GPL-3.0-or-later"
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+hex = "0.4"
+hmac = "0.12"
+libc = "0.2"
+percent-encoding = "2"
+rand = "0.8"
+rcgen = { version = "0.13", features = ["pem"] }
+reqwest = { version = "0.12", default-features = false, features = [
+    "rustls-tls-native-roots",
+    "rustls-tls-webpki-roots",
+    "gzip",
+    "brotli",
+    "deflate",
+] }
+rsa = "0.9"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12", "logging"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+sha2 = "0.10"
+time = "0.3"
+tokio = { version = "1", features = [
+    "fs",
+    "io-util",
+    "macros",
+    "net",
+    "rt-multi-thread",
+    "signal",
+    "sync",
+    "time",
+] }
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12", "logging"] }
+tokio-util = "0.7"
+
+# Key generation and big-integer maths are painfully slow in a debug build; these two stay optimised.
+[profile.dev.package.rsa]
+opt-level = 3
+
+[profile.dev.package.num-bigint-dig]
+opt-level = 3

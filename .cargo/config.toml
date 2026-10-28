@@ -1,0 +1,4 @@
+# Pick dependency versions that still build with the toolchain named in Cargo.toml's
+# rust-version instead of the newest ones that ask for a newer rustc.
+[resolver]
+incompatible-rust-versions = "fallback"
